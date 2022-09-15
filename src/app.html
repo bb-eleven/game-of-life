@@ -6,13 +6,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
 	</head>
-	<body>
-		<header>
-			<h1>Game of life</h1>
-			<nav>
-				<a href="/scores">scores</a>
+	<body class="font-[BLMelody-Regular] bg-mirage text-comet flex">
+		<header class="flex flex-col w-1/5 pt-8 pl-8">
+			<div id="logo" class="font-[MeshedDisplay-SemiBold] text-[2.5rem] leading-[1.1]">
+				<span class="text-pine-glade">bb11<br /></span>
+				<span class="text-ship-cove">game<br />of<br />life</span>
+			</div>
+			<nav class="pt-8 text-[1.8rem]">
+				<a href="/scores" class="hover:text-cadet-blue">scores</a>
+				<a href="/scores" class="hover:text-cadet-blue">scores</a>
+				<a href="/scores" class="hover:text-cadet-blue">scores</a>
 			</nav>
 		</header>
-		<div>%sveltekit.body%</div>
+		<div class="flex w-4/5">%sveltekit.body%</div>
 	</body>
 </html>

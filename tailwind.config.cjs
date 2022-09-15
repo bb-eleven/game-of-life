@@ -2,7 +2,22 @@
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		extend: {
+			colors: {
+				'pine-glade': '#C7D19E',
+				'ship-cove': '#6E91B9',
+				mirage: '#151B29',
+				'cadet-blue': '#A0A8C3',
+				comet: '#636985',
+				'orange-red-crayola': '#FF5A5F',
+				cultured: '#F5F5F5',
+				'tea-green': '#C4D6B0'
+			},
+			fontFamily: {
+				logo: 'MeshedDisplay-SemiBold',
+				text: 'BLMelody-Regular'
+			}
+		}
 	},
 	plugins: []
 };
