@@ -6,7 +6,10 @@ module.exports = {
 			colors: {
 				'pine-glade': '#C7D19E',
 				'ship-cove': '#6E91B9',
-				mirage: '#151B29',
+				mirage: {
+					dark: '#191F2D',
+					darker: '#151B29'
+				},
 				'cadet-blue': '#A0A8C3',
 				comet: '#636985',
 				'orange-red-crayola': '#FF5A5F',
