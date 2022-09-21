@@ -1,33 +1,34 @@
 <script lang="ts">
 	import SearchBar from './SearchBar.svelte';
+	import type { LeaderboardEntry } from './types/leaderboard-entry';
 
-	export let nameScores: [string, number][];
-	let nameScoresView = nameScores.sort();
+	export let leaderboards: LeaderboardEntry[];
+	let leaderboardsView = leaderboards;
 	let search: string = '';
 
-	let sortNameAsc = true;
+	let sortNameAsc = false;
 	let sortScoreAsc = false;
 
 	const sortByName = () => {
-		nameScoresView = nameScores.sort();
+		leaderboardsView = leaderboards.sort((a, b) => a.name.localeCompare(b.name));
 		if (sortNameAsc) {
-			nameScoresView.reverse();
+			leaderboardsView.reverse();
 		}
 		sortNameAsc = !sortNameAsc;
 	};
 
 	const sortByScore = () => {
-		nameScoresView = nameScores.sort((a, b) => a[1] - b[1]);
+		leaderboardsView = leaderboards.sort((a, b) => a.score - b.score);
 		if (sortScoreAsc) {
-			nameScoresView.reverse();
+			leaderboardsView.reverse();
 		}
 		sortScoreAsc = !sortScoreAsc;
 	};
 
 	$: {
-		nameScoresView = !search
-			? nameScores
-			: nameScores.filter((entry) => entry[0].toLowerCase().includes(search.toLowerCase()));
+		leaderboardsView = !search
+			? leaderboards
+			: leaderboards.filter((entry) => entry.name.toLowerCase().includes(search.toLowerCase()));
 	}
 </script>
 
@@ -36,13 +37,15 @@
 <!-- div is used instead of table because border-collapse and border-radius don't work together -->
 <div class="h-fit w-fit rounded-md border-2 border-comet bg-comet">
 	<div class="bg-mirage-dark w-[50vw] max-w-2xl text-left rounded">
-		<div class="thead grid grid-cols-2 grid-flow-row">
+		<div class="thead grid grid-cols-3 grid-flow-row">
+			<div on:click={sortByScore} class="th col-span-1 p-2 border-r-2 border-comet">Rank</div>
 			<div on:click={sortByName} class="th col-span-1 p-2 border-r-2 border-comet">Name</div>
 			<div on:click={sortByScore} class="th col-span-1 p-2 border-comet">Score</div>
 		</div>
 		<div class="tbody">
-			{#each nameScoresView as [name, score]}
-				<div class="tr grid grid-cols-2 grid-flow-row border-t-2 border-comet">
+			{#each leaderboardsView as { rank, name, score }}
+				<div class="tr grid grid-cols-3 grid-flow-row border-t-2 border-comet">
+					<div class="td p-2 border-r-2 border-comet">{rank}</div>
 					<div class="td p-2 border-r-2 border-comet">{name}</div>
 					<div class="td p-2 border-comet">{score}</div>
 				</div>

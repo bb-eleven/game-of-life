@@ -4,4 +4,4 @@
 	export let data: any;
 </script>
 
-<ScoreTable nameScores={data.nameScores} />
+<ScoreTable leaderboards={data.leaderboards} />
