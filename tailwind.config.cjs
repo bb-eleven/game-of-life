@@ -11,9 +11,9 @@ module.exports = {
 					darker: '#151B29'
 				},
 				'cadet-blue': '#A0A8C3',
-				comet: '#636985',
+				'comet': '#636985',
 				'orange-red-crayola': '#FF5A5F',
-				cultured: '#F5F5F5',
+				'cultured': '#F5F5F5',
 				'tea-green': '#C4D6B0'
 			},
 			fontFamily: {
