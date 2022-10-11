@@ -3,7 +3,6 @@
 	export let label: string;
 
 	let checked: boolean = false;
-	console.log(label);
 </script>
 
 <div class="flex items-center w-fit h-fit">
