@@ -28,7 +28,7 @@ export async function load() {
 	// map to LeaderboardEntry[], sorted by rank ascending, score descending
 	let rank = 1;
 	const leaderboards = response.data.values
-		.map((row) => ({ name: row[0], score: Math.floor(Math.random() * 200) }))
+		.map((row) => ({ name: row[0], score: Number(row[1]) }))
 		.sort((a, b) => b.score - a.score)
 		.map((entry) => ({ rank: rank++, ...entry }));
 
