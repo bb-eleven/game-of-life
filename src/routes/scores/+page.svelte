@@ -1,7 +1,7 @@
 <script lang="ts">
-	import ScoreTable from '$lib/ScoreTable.svelte';
+	import Leaderboards from '$lib/Leaderboards.svelte';
 
 	export let data: any;
 </script>
 
-<ScoreTable leaderboards={data.leaderboards} />
+<Leaderboards leaderboards={data.leaderboards} />
