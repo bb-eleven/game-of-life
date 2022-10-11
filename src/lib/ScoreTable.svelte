@@ -1,8 +1,14 @@
 <script lang="ts">
 	import SearchBar from './SearchBar.svelte';
-	import type { LeaderboardEntry } from './types/leaderboard-entry';
+	import { LeaderboardsSize, type LeaderboardEntry } from './types/leaderboard';
 
 	export let leaderboards: LeaderboardEntry[];
+	export let leaderboardsSize: LeaderboardsSize = LeaderboardsSize.FULL;
+
+	if (leaderboardsSize === LeaderboardsSize.SMALL) {
+		leaderboards = leaderboards.slice(0, LeaderboardsSize.SMALL);
+	}
+
 	let leaderboardsView = leaderboards;
 	let search: string = '';
 
