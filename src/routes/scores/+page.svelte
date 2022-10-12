@@ -1,7 +1,13 @@
 <script lang="ts">
 	import Leaderboards from '$lib/Leaderboards.svelte';
 
-	export let data: any;
+	const loadLeaderboards = fetch(import.meta.env.VITE_BASE_URL + '/leaderboards')
+		.then((res) => res.json())
+		.then((data) => data.leaderboards);
 </script>
 
-<Leaderboards leaderboards={data.leaderboards} />
+{#await loadLeaderboards}
+	<Leaderboards leaderboards={[]} />
+{:then leaderboards}
+	<Leaderboards {leaderboards} />
+{/await}
