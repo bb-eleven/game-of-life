@@ -3,3 +3,8 @@ export interface LeaderboardEntry {
 	name: string;
 	score: number;
 }
+
+export enum LeaderboardsSize {
+	SMALL = 5,
+	FULL
+}
