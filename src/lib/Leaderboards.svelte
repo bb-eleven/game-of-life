@@ -48,15 +48,17 @@
 
 <!-- <SearchBar bind:search /> -->
 
-<div class="flex flex-col">
-	<Checkbox
-		id="show-bankrupt-only"
-		label="show bankrupt people only"
-		bind:checked={showBankruptOnly}
-	/>
+<div class="flex flex-col space-y-4">
+	{#if leaderboardsSize !== LeaderboardsSize.SMALL}
+		<Checkbox
+			id="show-bankrupt-only"
+			label="show bankrupt people only"
+			bind:checked={showBankruptOnly}
+		/>
+	{/if}
 
 	<!-- div is used instead of table because border-collapse and border-radius don't work together -->
-	<div class="h-fit w-fit mt-4 rounded-md border-2 border-comet bg-comet">
+	<div class="h-fit w-fit rounded-md border-2 border-comet bg-comet">
 		<div class="bg-mirage w-[50vw] max-w-2xl text-left rounded">
 			<div class="thead grid grid-cols-3 grid-flow-row">
 				<div on:click={sortByScore} class="th col-span-1 p-2 border-r-2 border-comet">Rank</div>
