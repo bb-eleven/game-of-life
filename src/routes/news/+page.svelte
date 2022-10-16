@@ -6,16 +6,14 @@
 		.then((res) => res.json())
 		.then((data) => data.leaderboards);
 
-	let loadRecurringData: Promise<any>;
-	const loadDayNumber = fetch(import.meta.env.VITE_BASE_URL + '/day')
+	const neutralityDisplayMap = new Map<number, string>([
+		[-1, ':('],
+		[0, ':o'],
+		[1, ':D']
+	]);
+	const loadNews: Promise<any> = fetch(import.meta.env.VITE_BASE_URL + '/news')
 		.then((res) => res.json())
-		.then((data) => {
-			const day = data.day;
-			loadRecurringData = fetch(import.meta.env.VITE_BASE_URL + '/news/' + day)
-				.then((res) => res.json())
-				.then((data) => data.recurringData);
-			return day;
-		});
+		.then((data) => data.news);
 </script>
 
 <section class="flex space-x-4">
@@ -28,19 +26,27 @@
 	</div>
 
 	<div id="news" class="">
-		{#await loadDayNumber}
-			<span>Loading... </span>
-		{:then day}
-			{#await loadRecurringData}
-				<span>Getting news for day {day}</span>
-			{:then recurringData}
+		{#await loadNews}
+			<span>Loading...</span>
+		{:then news}
+			{#each Object.keys(news) as newsProperty}
+				<h3>{newsProperty}</h3>
 				<ul>
-					<li>Rental yield: {recurringData.propertyInvestment.rentalYield}%</li>
-					<li>Property value: {recurringData.propertyInvestment.propertyValue}%</li>
-					<li>Sales pitch: {recurringData.salesPitch}%</li>
-					<li>Life insurance penalty: ${recurringData.lifeInsurancePenalty}</li>
+					{#if newsProperty === 'interestingInfo'}
+						<li>
+							{neutralityDisplayMap.get(news[newsProperty].neutrality)}
+							{news[newsProperty].content}
+						</li>
+					{:else}
+						{#each news[newsProperty] as recurringNewsItem}
+							<li>
+								{neutralityDisplayMap.get(recurringNewsItem.neutrality)}
+								{recurringNewsItem.content}
+							</li>
+						{/each}
+					{/if}
 				</ul>
-			{/await}
+			{/each}
 		{/await}
 	</div>
 </section>
