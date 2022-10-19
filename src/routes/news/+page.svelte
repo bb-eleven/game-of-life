@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Leaderboards from '$lib/Leaderboards.svelte';
+	import NewsItemIcon from '$lib/NewsItemIcon.svelte';
 	import { LeaderboardsSize } from '$lib/types/leaderboard';
 
 	const loadLeaderboards = fetch(import.meta.env.VITE_BASE_URL + '/leaderboards')
@@ -30,12 +31,12 @@
 			<span>Loading...</span>
 		{:then news}
 			{#each news as newsItemGroup}
-				<h3>{newsItemGroup.name}</h3>
+				<h3 class="font-semibold text-lg">{newsItemGroup.name}</h3>
 				<ul>
-					{#each newsItemGroup.items as newsItem}
-						<li>
-							{neutralityDisplayMap.get(newsItem.neutrality)}
-							{newsItem.content}
+					{#each newsItemGroup.items as { neutrality, content }}
+						<li class="flex items-start">
+							<NewsItemIcon {neutrality} class="mr-1 mt-1" />
+							<span>{content}</span>
 						</li>
 					{/each}
 				</ul>
