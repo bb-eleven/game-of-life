@@ -29,22 +29,15 @@
 		{#await loadNews}
 			<span>Loading...</span>
 		{:then news}
-			{#each Object.keys(news) as newsProperty}
-				<h3>{newsProperty}</h3>
+			{#each news as newsItemGroup}
+				<h3>{newsItemGroup.name}</h3>
 				<ul>
-					{#if newsProperty === 'interestingInfo'}
+					{#each newsItemGroup.items as newsItem}
 						<li>
-							{neutralityDisplayMap.get(news[newsProperty].neutrality)}
-							{news[newsProperty].content}
+							{neutralityDisplayMap.get(newsItem.neutrality)}
+							{newsItem.content}
 						</li>
-					{:else}
-						{#each news[newsProperty] as recurringNewsItem}
-							<li>
-								{neutralityDisplayMap.get(recurringNewsItem.neutrality)}
-								{recurringNewsItem.content}
-							</li>
-						{/each}
-					{/if}
+					{/each}
 				</ul>
 			{/each}
 		{/await}
