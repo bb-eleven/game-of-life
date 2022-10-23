@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from './Icon.svelte';
 	import type { FilledSvgIcon } from './types/icon';
 
 	export let neutrality: 1 | 0 | -1;
@@ -23,6 +24,4 @@
 	};
 </script>
 
-<span class={($$props.class ?? '') + ' ' + neutralityIconMap[neutralityStr].fill}>
-	{@html neutralityIconMap[neutralityStr].svg}
-</span>
+<Icon filledSvgIcon={neutralityIconMap[neutralityStr]} class={$$props.class} />

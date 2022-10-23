@@ -1,17 +1,12 @@
 <script lang="ts">
 	import Leaderboards from '$lib/Leaderboards.svelte';
-	import NewsItemIcon from '$lib/NewsItemIcon.svelte';
+	import NeutralityIcon from '$lib/NeutralityIcon.svelte';
 	import { LeaderboardsSize } from '$lib/types/leaderboard';
 
 	const loadLeaderboards = fetch(import.meta.env.VITE_BASE_URL + '/leaderboards')
 		.then((res) => res.json())
 		.then((data) => data.leaderboards);
 
-	const neutralityDisplayMap = new Map<number, string>([
-		[-1, ':('],
-		[0, ':o'],
-		[1, ':D']
-	]);
 	const loadNews: Promise<any> = fetch(import.meta.env.VITE_BASE_URL + '/news')
 		.then((res) => res.json())
 		.then((data) => data.news);
@@ -35,7 +30,7 @@
 				<ul>
 					{#each newsItemGroup.items as { neutrality, content }}
 						<li class="flex items-start">
-							<NewsItemIcon {neutrality} class="mr-1 mt-1" />
+							<NeutralityIcon {neutrality} class="mr-1 mt-1" />
 							<span>{content}</span>
 						</li>
 					{/each}
