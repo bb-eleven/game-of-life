@@ -58,8 +58,8 @@
 	{/if}
 
 	<!-- div is used instead of table because border-collapse and border-radius don't work together -->
-	<div class="h-fit w-fit rounded-md border-2 border-comet bg-comet">
-		<div class="bg-mirage w-[50vw] max-w-2xl text-left rounded">
+	<div class="h-fit rounded-md border-2 border-comet bg-comet">
+		<div class="bg-mirage text-left rounded">
 			<div class="thead grid grid-cols-3 grid-flow-row">
 				<div on:click={sortByScore} class="th col-span-1 p-2 border-r-2 border-comet">Rank</div>
 				<div on:click={sortByName} class="th col-span-1 p-2 border-r-2 border-comet">Name</div>
