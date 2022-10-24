@@ -48,20 +48,37 @@
 
 <!-- <SearchBar bind:search /> -->
 
-<div class="flex flex-col">
-	<Checkbox
-		id="show-bankrupt-only"
-		label="show bankrupt people only"
-		bind:checked={showBankruptOnly}
-	/>
+<div class="flex flex-col space-y-4">
+	{#if leaderboardsSize !== LeaderboardsSize.SMALL}
+		<Checkbox
+			id="show-bankrupt-only"
+			label="show bankrupt people only"
+			bind:checked={showBankruptOnly}
+		/>
+	{/if}
 
 	<!-- div is used instead of table because border-collapse and border-radius don't work together -->
-	<div class="h-fit w-fit mt-4 rounded-md border-2 border-comet bg-comet">
-		<div class="bg-mirage w-[50vw] max-w-2xl text-left rounded">
+	<div class="h-fit rounded-md border-2 border-comet bg-comet">
+		<div class="bg-mirage text-left rounded">
 			<div class="thead grid grid-cols-3 grid-flow-row">
-				<div on:click={sortByScore} class="th col-span-1 p-2 border-r-2 border-comet">Rank</div>
-				<div on:click={sortByName} class="th col-span-1 p-2 border-r-2 border-comet">Name</div>
-				<div on:click={sortByScore} class="th col-span-1 p-2 border-comet">Score</div>
+				<div
+					on:click={sortByScore}
+					class="select-none hover:cursor-pointer hover:bg-comet focus:bg-comet active:bg-comet hover:text-mirage focus:text-mirage th col-span-1 p-2 border-r-2 border-comet"
+				>
+					Rank
+				</div>
+				<div
+					on:click={sortByName}
+					class="select-none hover:cursor-pointer hover:bg-comet focus:bg-comet active:bg-comet hover:text-mirage focus:text-mirage th col-span-1 p-2 border-r-2 border-comet"
+				>
+					Name
+				</div>
+				<div
+					on:click={sortByScore}
+					class="select-none hover:cursor-pointer hover:bg-comet focus:bg-comet active:bg-comet hover:text-mirage focus:text-mirage th col-span-1 p-2 border-comet"
+				>
+					Score
+				</div>
 			</div>
 			<div class="tbody">
 				{#each leaderboardsView as { rank, name, score }}
@@ -75,12 +92,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	@tailwind components;
-	@layer components {
-		.th {
-			@apply select-none hover:cursor-pointer hover:bg-comet focus:bg-comet active:bg-comet hover:text-mirage focus:text-mirage;
-		}
-	}
-</style>

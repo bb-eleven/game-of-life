@@ -8,7 +8,8 @@ module.exports = {
 				'ship-cove': '#6E91B9',
 				'mirage': {
 					DEFAULT: '#191F2D',
-					darker: '#151B29'
+					darker: '#151B29',
+					lighter: '#1C2231'
 				},
 				'cadet-blue': '#A0A8C3',
 				'comet': {
@@ -17,7 +18,8 @@ module.exports = {
 				},
 				'orange-red-crayola': '#FF5A5F',
 				'cultured': '#F5F5F5',
-				'tea-green': '#C4D6B0'
+				'envy': '#93B19C',
+				'quicksand': '#B99090'
 			},
 			fontFamily: {
 				logo: 'MeshedDisplay-SemiBold',
