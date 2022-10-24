@@ -6,8 +6,10 @@
 		.then((data) => data.leaderboards);
 </script>
 
-{#await loadLeaderboards}
-	<Leaderboards leaderboards={[]} />
-{:then leaderboards}
-	<Leaderboards {leaderboards} />
-{/await}
+<section class="w-3/5">
+	{#await loadLeaderboards}
+		<Leaderboards leaderboards={[]} />
+	{:then leaderboards}
+		<Leaderboards {leaderboards} />
+	{/await}
+</section>
