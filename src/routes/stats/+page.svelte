@@ -9,7 +9,10 @@
 
 	const loadLeaderboards = fetch(import.meta.env.VITE_BASE_URL + '/leaderboards')
 		.then((res) => res.json())
-		.then((data) => (leaderboards = data.leaderboards));
+		.then((data) => {
+			leaderboards = data.leaderboards;
+			leaderboards.sort((a, b) => a.name.localeCompare(b.name));
+		});
 
 	const filterNames = (name: string): LeaderboardEntry[] => {
 		name = name?.trim();
