@@ -42,8 +42,10 @@
 	};
 </script>
 
-<section class="flex flex-col space-y-8 w-4/5">
-	<div id="leaderboards" class="w-[100%]">
+<section
+	class="flex flex-col lg:flex-row-reverse space-y-8 lg:space-y-0 lg:space-x-reverse lg:space-x-8"
+>
+	<div id="leaderboards" class="w-[100%] lg:w-2/5">
 		<h1 class="font-[MeshedDisplay-SemiBold] text-[2rem]">Leaderboards</h1>
 		{#await loadLeaderboards}
 			<Leaderboards leaderboards={[]} leaderboardsSize={LeaderboardsSize.SMALL} />
@@ -52,7 +54,7 @@
 		{/await}
 	</div>
 
-	<div id="news" class="flex flex-col">
+	<div id="news" class="flex flex-col lg:w-3/5">
 		<h1 class="font-[MeshedDisplay-SemiBold] text-[2rem]">News</h1>
 		{#await loadNews}
 			<span>Loading...</span>
