@@ -26,7 +26,7 @@
 	$: results = filterNames(search);
 </script>
 
-<h1 class="font-[MeshedDisplay-SemiBold] text-[2rem]">Player stats</h1>
+<h1 class="font-[MeshedDisplay-SemiBold] text-[2rem] mb-2">Player stats</h1>
 
 {#await loadLeaderboards}
 	<span>Fetching player data...</span>
