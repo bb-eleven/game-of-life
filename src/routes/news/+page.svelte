@@ -5,13 +5,33 @@
 	import type { FilledSvgIcon } from '$lib/types/icon';
 	import { LeaderboardsSize } from '$lib/types/leaderboard';
 
+	let newsLastFetched: Date;
+	const formatNewsLastFetched = (d: Date) => {
+		return (
+			String(d.getDay()).padStart(2, '0') +
+			'/' +
+			String(d.getMonth()).padStart(2, '0') +
+			'/' +
+			(d.getFullYear() % 100) +
+			' ' +
+			String(d.getHours()).padStart(2, '0') +
+			':' +
+			String(d.getMinutes()).padStart(2, '0') +
+			':' +
+			String(d.getSeconds()).padStart(2, '0')
+		);
+	};
+
 	const loadLeaderboards = fetch(import.meta.env.VITE_BASE_URL + '/leaderboards')
 		.then((res) => res.json())
 		.then((data) => data.leaderboards);
 
 	const loadNews: Promise<any> = fetch(import.meta.env.VITE_BASE_URL + '/news')
 		.then((res) => res.json())
-		.then((data) => data.news);
+		.then((data) => {
+			newsLastFetched = new Date();
+			return data.news;
+		});
 
 	const newsItemIconMap: { [key: string]: FilledSvgIcon } = {
 		'Interesting info': {
@@ -52,6 +72,9 @@
 		{:then leaderboards}
 			<Leaderboards {leaderboards} leaderboardsSize={LeaderboardsSize.SMALL} />
 		{/await}
+		<p class="mt-2 text-comet-darker">
+			Updated: {newsLastFetched ? formatNewsLastFetched(newsLastFetched) : '-'}
+		</p>
 	</div>
 
 	<div id="news" class="flex flex-col lg:w-3/5">
