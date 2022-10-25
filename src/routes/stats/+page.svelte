@@ -30,8 +30,7 @@
 
 {#await loadLeaderboards}
 	<span>Fetching player data...</span>
-	<!-- doesn't update when done in loadLeaderboards.then() -->
-{:then { results = leaderboards }}
+{:then}
 	<section class="flex space-x-8">
 		<div class="flex flex-col space-y-4">
 			<SearchBar bind:search />
