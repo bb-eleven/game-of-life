@@ -6,20 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
 	</head>
-	<body class="font-[BLMelody-Regular] bg-mirage-darker text-comet flex mt-8">
-		<header class="flex flex-col w-1/5 ml-8">
-			<div id="logo" class="font-[MeshedDisplay-SemiBold] text-[2.5rem] leading-[1.1]">
-				<span class="text-pine-glade">bb11<br /></span>
-				<span class="text-ship-cove">game<br />of<br />life</span>
+	<body
+		class="font-[BLMelody-Regular] bg-mirage-darker text-comet mt-8 mx-8 lg:ml-40 lg:w-3/4 flex flex-col"
+	>
+		<header class="flex justify-self-center items-center space-x-16 lg:space-x-20">
+			<div id="logo" class="font-[MeshedDisplay-SemiBold] text-[2rem] leading-[1.1]">
+				<span class="text-pine-glade">bb eleven<br /></span>
+				<span class="text-ship-cove">game of life</span>
 			</div>
-			<nav class="pt-8 text-[1.8rem] flex-col justify-items-start">
+			<nav class="mb-[0.9rem] text-[1.4rem] space-x-12">
 				<a href="/scores" class="hover:text-cadet-blue">scores</a>
-				<hr class="h-0 border-0" />
 				<a href="/news" class="hover:text-cadet-blue">news</a>
-				<hr class="h-0 border-0" />
 				<a href="/stats" class="hover:text-cadet-blue">stats</a>
 			</nav>
 		</header>
-		<div class="w-4/5">%sveltekit.body%</div>
+		<div class="mt-8">%sveltekit.body%</div>
 	</body>
 </html>
