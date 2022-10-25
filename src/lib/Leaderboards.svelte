@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Checkbox from './Checkbox.svelte';
-	import SearchBar from './SearchBar.svelte';
 	import { LeaderboardsSize, type LeaderboardEntry } from './types/leaderboard';
 
 	export let leaderboards: LeaderboardEntry[];
