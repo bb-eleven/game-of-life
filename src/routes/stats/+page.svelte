@@ -34,7 +34,7 @@
 	<section class="flex space-x-8">
 		<div class="flex flex-col space-y-4">
 			<SearchBar bind:search />
-			<ul class="bg-mirage-lighter rounded-md w-[200px] h-fit max-h-[40vh] overflow-y-scroll">
+			<ul class="bg-mirage-lighter rounded-md w-[200px] h-fit max-h-[60vh] overflow-y-scroll">
 				{#if results?.length > 0}
 					{#each results as result}
 						<li
