@@ -36,7 +36,7 @@
 
 	$: {
 		leaderboardsView = !search
-			? leaderboardsView
+			? leaderboards
 			: leaderboards.filter((entry) => entry.name.toLowerCase().includes(search.toLowerCase()));
 	}
 
