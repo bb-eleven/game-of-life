@@ -8,8 +8,8 @@
 
 <section class="w-3/5">
 	{#await loadLeaderboards}
-		<Leaderboards leaderboards={[]} />
+		<Leaderboards leaderboards={[]} showSearchBar={true} />
 	{:then leaderboards}
-		<Leaderboards {leaderboards} />
+		<Leaderboards {leaderboards} showSearchBar={true} />
 	{/await}
 </section>

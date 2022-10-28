@@ -1,9 +1,11 @@
 <script lang="ts">
+	import SearchBar from '$lib/SearchBar.svelte';
 	import Checkbox from './Checkbox.svelte';
 	import { LeaderboardsSize, type LeaderboardEntry } from './types/leaderboard';
 
 	export let leaderboards: LeaderboardEntry[];
 	export let leaderboardsSize: LeaderboardsSize = LeaderboardsSize.FULL;
+	export let showSearchBar: boolean = false;
 	let showBankruptOnly: boolean;
 
 	if (leaderboardsSize === LeaderboardsSize.SMALL) {
@@ -45,8 +47,6 @@
 	}
 </script>
 
-<!-- <SearchBar bind:search /> -->
-
 <div class="flex flex-col space-y-4">
 	{#if leaderboardsSize !== LeaderboardsSize.SMALL}
 		<Checkbox
@@ -54,6 +54,10 @@
 			label="show bankrupt people only"
 			bind:checked={showBankruptOnly}
 		/>
+	{/if}
+
+	{#if showSearchBar}
+		<SearchBar bind:search />
 	{/if}
 
 	<!-- div is used instead of table because border-collapse and border-radius don't work together -->
